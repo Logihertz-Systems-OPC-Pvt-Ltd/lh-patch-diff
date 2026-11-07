@@ -1,0 +1,70 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lh-patch-diff"
+version = "0.1.0"
+description = "Correlates software package inventories and lockfiles against offline OSV/NVD vulnerability advisory feeds, computing minimum safe SemVer upgrade versions, CVSS v3.1 severity gates, and breaking-change risk scores."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+    { name = "logihertzsystems", email = "ops@logihertz.com" },
+    { name = "Sameer Tawade (Creator, Founder, Director & Sole Developer)", email = "ops@logihertz.com" },
+]
+maintainers = [
+    { name = "Logihertz Systems (OPC) Private Limited", email = "ops@logihertz.com" },
+]
+keywords = [
+    "vulnerability-scanner",
+    "osv",
+    "patch-management",
+    "semver",
+    "cve-auditor",
+    "sarif",
+    "logihertz",
+]
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "bandit>=1.7.8",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-patch-diff"
+Repository = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-patch-diff"
+Documentation = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-patch-diff#documentation"
+Issues = "https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-patch-diff/issues"
+
+[project.scripts]
+lh-patch = "lh_patch_diff.cli:app"
+lh-patch-diff = "lh_patch_diff.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lh_patch_diff"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv"]
+skips = ["B101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --strict-markers"
+
