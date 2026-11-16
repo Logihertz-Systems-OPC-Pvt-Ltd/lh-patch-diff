@@ -1,0 +1,9 @@
+Package: lh-patch-diff
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: Sameer Tawade <ops@logihertz.com>
+Homepage: https://www.logihertz.com
+Description: lh-patch - Temporal CVSS v3.1 Priority Ranking Function
+ Air-gapped vulnerability patch analyzer matching OS package inventories and dependency lockfiles against offline OSV and NVD CVE advisories with CVSS risk prioritization and SARIF v2.1.0 export.
